@@ -1,6 +1,7 @@
 package com.example.recyclerview02062020.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -24,11 +25,17 @@ public class MainActivity extends AppCompatActivity {
 
         mRcvFood = findViewById(R.id.recyclerviewFood);
         mArrayFoods = new ArrayList<>();
+        Food.mock(mArrayFoods);
 
-        mArrayFoods.add(new Food(R.drawable.buncha ,"Bún chả","Bún chả hà nội ngon số một khu vực Hà Nội","45000"));
-        mArrayFoods.add(new Food(R.drawable.goicuon ,"Gỏi cuốn","Gỏi cuốn tôm thịt","30000"));
-        mArrayFoods.add(new Food(R.drawable.khaivi ,"Khai vị","Các món khai vị được dùng trong bữa tiệc","130000"));
-        mArrayFoods.add(new Food(R.drawable.tomchien ,"Tôm chiên","Tôm chiên giòn","50000"));
-        mArrayFoods.add(new Food(R.drawable.buncha ,"Tôm hùm","Tôm hùm tươi sống","150000"));
+        mFoodAdapter = new FoodAdapter(mArrayFoods);
+        mRcvFood.setAdapter(mFoodAdapter);
+        mRcvFood.setItemViewCacheSize(20);
+        mRcvFood.setHasFixedSize(true);
+//        mRcvFood.addItemDecoration(
+//                new DividerItemDecoration(
+//                        this,
+//                        DividerItemDecoration.VERTICAL
+//                )
+//        );
     }
 }
