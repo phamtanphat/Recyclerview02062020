@@ -8,6 +8,7 @@
     tools:context=".view.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerviewFood"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_food"
         android:layout_width="match_parent"
