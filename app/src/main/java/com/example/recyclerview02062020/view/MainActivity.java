@@ -5,9 +5,11 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.recyclerview02062020.R;
 import com.example.recyclerview02062020.adapter.FoodAdapter;
+import com.example.recyclerview02062020.interfaces.OnItemClickListener;
 import com.example.recyclerview02062020.model.Food;
 
 import java.util.ArrayList;
@@ -37,5 +39,12 @@ public class MainActivity extends AppCompatActivity {
 //                        DividerItemDecoration.VERTICAL
 //                )
 //        );
+
+        mFoodAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void itemListener() {
+                Toast.makeText(MainActivity.this, "ItemClick", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

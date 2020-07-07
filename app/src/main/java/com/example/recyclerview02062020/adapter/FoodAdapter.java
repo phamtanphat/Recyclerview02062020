@@ -1,25 +1,27 @@
 package com.example.recyclerview02062020.adapter;
 
-import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.recyclerview02062020.R;
+import com.example.recyclerview02062020.interfaces.OnItemClickListener;
 import com.example.recyclerview02062020.model.Food;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodHolder>{
+public  class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodHolder>{
 
     private List<Food> mFoodList = new ArrayList<>();
+    private OnItemClickListener mListener;
+
     //constructor
     public FoodAdapter(List<Food> arrayFoods){
         if (mFoodList.size() != 0) {
@@ -60,6 +62,16 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodHolder>{
             tvName = itemView.findViewById(R.id.textviewName);
             tvPrice = itemView.findViewById(R.id.textviewPrice);
             tvDescribe = itemView.findViewById(R.id.textviewDescribe);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                   mListener.itemListener();
+                }
+            });
         }
+    }
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.mListener = listener;
     }
 }
