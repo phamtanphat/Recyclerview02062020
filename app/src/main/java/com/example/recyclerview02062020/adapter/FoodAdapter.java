@@ -19,15 +19,12 @@ import java.util.List;
 
 public  class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodHolder>{
 
-    private List<Food> mFoodList = new ArrayList<>();
+    private List<Food> mFoodList;
     private OnItemClickListener mListener;
 
     //constructor
     public FoodAdapter(List<Food> arrayFoods){
-        if (mFoodList.size() != 0) {
-            mFoodList.clear();
-        }
-        mFoodList.addAll(arrayFoods);
+        mFoodList = arrayFoods;
     }
     @NonNull
     @Override
@@ -66,12 +63,17 @@ public  class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodHolder>{
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                   mListener.itemListener();
+                   mListener.itemListener(getAdapterPosition());
                 }
             });
         }
     }
     public void setOnItemClickListener(OnItemClickListener listener){
         this.mListener = listener;
+    }
+
+    public void setRemoveData(int position){
+        mFoodList.remove(position);
+        notifyDataSetChanged();
     }
 }

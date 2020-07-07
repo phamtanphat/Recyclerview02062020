@@ -1,5 +1,5 @@
 package com.example.recyclerview02062020.interfaces;
 
 public interface OnItemClickListener {
-    void itemListener();
+    void itemListener(int position);
 }
